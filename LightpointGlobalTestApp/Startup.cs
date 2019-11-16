@@ -2,6 +2,8 @@
 using LightpointGlobalTestApp.Extensions;
 using LightpointGlobalTestApp.Mapper;
 using LightpointGlobalTestApp.Model;
+using LightpointGlobalTestApp.Services.Contracts;
+using LightpointGlobalTestApp.Services.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,9 @@ namespace LightpointGlobalTestApp
         {
             services.AddCors();
 
+            services.AddDbContext<ApplicationDatabaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -36,6 +41,7 @@ namespace LightpointGlobalTestApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Injecting services
+            services.AddTransient<IShopsService, ShopsService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDatabaseContext dbcontext)
@@ -53,6 +59,8 @@ namespace LightpointGlobalTestApp
             }
 
             app.UseCors(opts => opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+
+            app.ConfigureExceptionHandler();
 
             app.UseMvc();
         }
