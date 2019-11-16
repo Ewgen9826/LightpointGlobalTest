@@ -64,9 +64,10 @@ namespace LightpointGlobalTestApp.Services.Implementations
         public void Update(int id, UpdateShopViewModel model)
         {
             var shop = GetById(id);
-            shop.LastUpdateAt = DateTime.UtcNow;
 
             shop = _mapper.Map(model, shop);
+
+            shop.LastUpdateAt = DateTime.UtcNow;
 
             _context.Update(shop);
             _context.SaveChanges();

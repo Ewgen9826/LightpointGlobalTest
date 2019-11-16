@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LightpointGlobalTestApp.Model.DatabaseModels;
+using LightpointGlobalTestApp.ViewModels.Item;
 using LightpointGlobalTestApp.ViewModels.Shop;
 
 namespace LightpointGlobalTestApp.Mapper
@@ -8,11 +9,17 @@ namespace LightpointGlobalTestApp.Mapper
     {
         public MappingProfile()
         {
-            // view=>shop
+            //  view=>shop
             CreateMap<CreateShopViewModel, Shop>();
             CreateMap<UpdateShopViewModel, Shop>();
-            // shop=>view
+            //  shop=>view
             CreateMap<Shop, ShopViewModel>();
+
+            //  view=>item
+            CreateMap<CreateItemViewModel, Item>();
+            CreateMap<UpdateItemViewModel, Item>();
+            //  item=>view
+            CreateMap<Item, ItemViewModel>();
         }
     }
 }

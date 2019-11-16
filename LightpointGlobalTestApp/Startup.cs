@@ -42,6 +42,7 @@ namespace LightpointGlobalTestApp
 
             // Injecting services
             services.AddTransient<IShopsService, ShopsService>();
+            services.AddTransient<IItemsService, ItemsService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDatabaseContext dbcontext)
