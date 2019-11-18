@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Seeds\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

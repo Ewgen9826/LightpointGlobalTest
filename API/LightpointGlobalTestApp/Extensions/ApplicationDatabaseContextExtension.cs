@@ -1,4 +1,5 @@
 ﻿using LightpointGlobalTestApp.Model;
+using LightpointGlobalTestApp.Model.Seeds;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
@@ -25,7 +26,7 @@ namespace LightpointGlobalTestApp.Extensions
 
         public static void Started(this ApplicationDatabaseContext context)
         {
-           
+            InitDataBase.Seed(context);
         }
     }
 }
