@@ -1,0 +1,33 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 25%;
+  padding: 40px;
+}
+
+.card-title{
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea{
+  min-height: 100px;
+}
+
+.btn{
+  margin-top: 40px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}

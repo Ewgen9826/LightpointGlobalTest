@@ -1,0 +1,6 @@
+<app-item-details
+  [itemAction]="itemAction"
+  [item]="item$ | async"
+  [loading]="loading$ | async"
+  (action)="update($event)"
+></app-item-details>

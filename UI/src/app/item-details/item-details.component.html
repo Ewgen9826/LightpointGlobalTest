@@ -1,0 +1,60 @@
+<mat-card class="card"
+  ><mat-card-title class="card-title">{{ title }}</mat-card-title>
+  <mat-card-content>
+    <form class="form" #form="ngForm">
+      <!-- Name Name -->
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Item name"
+          [(ngModel)]="item.name"
+          name="name"
+          required
+          minlength="2"
+          #nameInput="ngModel"
+        />
+        <mat-hint>{{ nameInput.value?.length }} / 2</mat-hint>
+        <mat-error>Has to be at lest 2 characters long.</mat-error>
+        <mat-error *ngIf="nameInput.hasError('required')"
+          >Field must not be empty</mat-error
+        >
+      </mat-form-field>
+
+      <!-- Description name -->
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="Description"
+          [(ngModel)]="item.description"
+          name="description"
+          required
+          minlength="8"
+          #descriptionInput="ngModel"
+        ></textarea>
+        <mat-hint>{{ descriptionInput.value?.length }} / 2</mat-hint>
+        <mat-error>Has to be at lest 2 characters long.</mat-error>
+        <mat-error *ngIf="descriptionInput.hasError('required')"
+          >Field must not be empty</mat-error
+        >
+      </mat-form-field>
+
+      <button
+        [disabled]="form.invalid || loading"
+        class="btn"
+        mat-flat-button
+        color="primary"
+        (click)="clickBtn()"
+      >
+        <mat-spinner
+          class="spinner"
+          *ngIf="loading"
+          class="btn-spinner"
+          [diameter]="40"
+        ></mat-spinner>
+        <span *ngIf="!loading">
+          {{ btnText }}
+        </span>
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
